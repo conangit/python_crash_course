@@ -9,15 +9,16 @@ from alien import Alien
 
 
 
-def fire_bullet(ai_settings, screen, ship, bullets):
+def fire_bullet(ai_settings, screen, stats, ship, bullets):
     '''发射一颗子弹'''
     # 创建一颗子弹 并将其加入到编组bullets中
-    if len(bullets) < ai_settings.bullets_allowed:
+    # 游戏活动才可以发射子弹
+    if stats.game_active and len(bullets) < ai_settings.bullets_allowed:
         new_bullet = Bullet(ai_settings, screen, ship)
         bullets.add(new_bullet)
 
 
-def check_keydown_events(event, ai_settings, screen, ship, bullets):
+def check_keydown_events(event, ai_settings, screen, stats, ship, bullets):
     '''响应按键按下'''
     if event.key == pygame.K_q:
         sys.exit()
@@ -26,7 +27,7 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
-        fire_bullet(ai_settings, screen, ship, bullets)
+        fire_bullet(ai_settings, screen, stats, ship, bullets)
 
 
 def check_keyup_events(event, ship):
@@ -44,7 +45,7 @@ def check_events(ai_settings, screen, stats, scoreboard, play_button, ship, alie
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            check_keydown_events(event, ai_settings, screen, ship, bullets)
+            check_keydown_events(event, ai_settings, screen, stats, ship, bullets)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
         elif event.type == pygame.MOUSEBUTTONDOWN:

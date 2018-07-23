@@ -18,7 +18,7 @@ def run_game():
     # 连发
     # 注意某个时刻下 只能响应一个连续按键事件
     # 即持续按下space键后 再持续按下right键 将响应right键的持续按下
-    pygame.key.set_repeat(10)
+    # pygame.key.set_repeat(10)
 
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
@@ -63,8 +63,7 @@ run_game()
 
 '''
 bug改进
-<1>在游戏非活动状态时，飞船仍可以发射子弹
+<1>在游戏非活动状态时，飞船仍可以发射子弹 -- OK
 <2>按Play键，再次游戏，得分没有立马更新 -- 检测按钮Play时更新
-<3>玩家生命数量的问题
 '''
 

@@ -35,11 +35,11 @@ class Settings():
 
     def init_dynamic_settings(self):
         '''游戏动态设置'''
-        self.ship_speed_factor = 0.5
+        self.ship_speed_factor = 0.8
         self.bullet_speed_factor = 1.0
         self.alien_speed_factor = 0.5
         
-        self.fleet_drop_speed = 100
+        self.fleet_drop_speed = 1
         self.bullets_allowed = 3
 
         self.alien_points = 10
@@ -50,7 +50,7 @@ class Settings():
         
         self.alien_speed_factor *= self.speedup_scale
 
-        if self.bullet_speed_factor < 3:
+        if self.bullet_speed_factor < 2:
             self.bullet_speed_factor *= self.speedup_scale
 
         self.fleet_drop_speed *= self.speedup_scale
